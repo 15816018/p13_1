@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/sekaiisan.css' %}">
   </head>
-  <body background={{image}}>
+  <body background={{image}} style="width: {{width}}px; text-align: right;">
     <div><strong>{{name}}</strong></div>
-    <div>{{detail}}</div>
+    <div id = "detail" >{{detail}}</div>
 
     <div>
       <a href={{bing_search}}>more images</a>

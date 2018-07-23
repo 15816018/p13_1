@@ -4,10 +4,22 @@ body {
   background-color: black;
   -webkit-background-size: contain;
   background-size: contain;
-  margin-right: 150px;
-  margin-left: 150px;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
+}
+
+#Time {
+  color: black;
+  font-size: 100px;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+#Date {
+  color: black;
+  font-size: 60px;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+#detail {
+
 }

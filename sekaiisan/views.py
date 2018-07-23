@@ -5,6 +5,14 @@ import re
 import random
 
 #http://127.0.0.1:8000/sekaiisan/
+from PIL import Image
+
+
+def get_image_size(url):
+    response = requests.get(url, stream=True)
+    response.raw.decode_content = True
+    img = Image.open(response.raw)
+    return (img.width, img.height)
 
 def appmain(request):
     img = None
@@ -20,5 +28,7 @@ def appmain(request):
     title = soup.find('h6').getText() #名称を取得
     imgSrc = init_url + img['data-src'] #画像ソースを取得
     search_url = 'https://www.bing.com/images/search?q='+ title.replace(' ','+') #画像検索URL
-
-    return render(request, 'demo/sekaiisan.html', {'name': title, 'detail': exp, 'image': imgSrc, 'bing_search': search_url})
+    width, height = get_image_size(imgSrc)
+    print(str(width) + ' ' + str(height))
+    return render(request, 'demo/sekaiisan.html', {'name': title, 'detail': exp, 'image': imgSrc, 'bing_search': search_url,
+                                                    'width': width, 'height': height})
