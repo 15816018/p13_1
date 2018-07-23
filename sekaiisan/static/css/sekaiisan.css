@@ -21,5 +21,6 @@ body {
 }
 
 #detail {
-
+  margin-left: auto;
+  margin-right: auto;
 }

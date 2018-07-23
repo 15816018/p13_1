@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/sekaiisan.css' %}">
   </head>
-  <body background={{image}} style="width: {{width}}px; text-align: right;">
-    <div><strong>{{name}}</strong></div>
-    <div id = "detail" >{{detail}}</div>
+
+
+  <body background={{image}}>
+    <div style="text-align: center"><strong>{{name}}</strong></div>
+    <div style="width:{{width}}px " id = "detail" >{{detail}}</div>
 
     <div>
       <a href={{bing_search}}>more images</a>
-      <p id ="Date"></p>
-      <p id ="Time"></p>
+      <p id ="Date" style="position: relative; width:{{width}}px; top: 0; left: 0; right: 0; bottom: 0; margin: auto;"></p>
+      <p id ="Time" style="position: relative; width:{{width}}px; top: 0; left: 0; right: 0; bottom: 0; margin: auto;"></p>
     </div>
 
   </body>
