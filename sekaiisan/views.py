@@ -14,6 +14,7 @@ def appmain(request):
         res = requests.get('http://whc.unesco.org/en/list/'+str(id)+'/')
         soup = bs4.BeautifulSoup(res.text,"lxml")
         img = soup.find('img',class_='unveil')
+    print(img)
 
     exp = soup.find('p').getText() #概要文を取得
     title = soup.find('h6').getText() #名称を取得

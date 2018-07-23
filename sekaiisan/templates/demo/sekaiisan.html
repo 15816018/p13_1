@@ -1,16 +1,61 @@
+{% load staticfiles %}
 <html>
   <head>
+    <script type="templates/demo" src="time.js"></script>
     <title>世界遺産</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/sekaiisan.css' %}">
   </head>
-  <body>
+  <body background={{image}}>
     <div><strong>{{name}}</strong></div>
     <div>{{detail}}</div>
-    <div>
-      <img src={{image}}>
-    </div>
+
     <div>
       <a href={{bing_search}}>more images</a>
+      <p id ="Date"></p>
+      <p id ="Time"></p>
     </div>
+
   </body>
     <meta http-equiv="content-type" charset="utf-8">
 </html>
+
+<script type="text/javascript">
+function setTwoDigits(num){
+  var tmp;
+  if(num < 10){
+    tmp = "0" + num;
+  }else{
+    tmp = num;
+  }
+
+  return tmp;
+}
+
+function showDate(){
+  var now = new Date();
+
+  var month = setTwoDigits(now.getMonth() + 1);
+  var date = setTwoDigits(now.getDate());
+  var day = now.getDay();
+
+  var dotw = new Array("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.");
+
+  var show = month + "月" + date + "日 (" + dotw[day] + ")";
+  document.getElementById("Date").innerHTML = show;
+}
+setInterval('showDate()', 1000);
+
+function showTime(){
+  var now = new Date();
+
+  var hour = setTwoDigits(now.getHours());
+  var min = setTwoDigits(now.getMinutes());
+  var sec = setTwoDigits(now.getSeconds());
+
+  var show = hour + ":" + min + ":" + sec;
+  document.getElementById("Time").innerHTML = show;
+}
+setInterval('showTime()', 1000);
+</script>
