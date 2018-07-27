@@ -31,4 +31,4 @@ def appmain(request):
     width, height = get_image_size(imgSrc)
     print(str(width) + ' ' + str(height))
     return render(request, 'demo/sekaiisan.html', {'name': title, 'detail': exp, 'image': imgSrc, 'bing_search': search_url,
-                                                    'width': width, 'height': height-200})
+                                                    'width': width, 'height': height-240})
