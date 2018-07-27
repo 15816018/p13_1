@@ -1,20 +1,16 @@
 body {
-  background-position: center top;
-  background-repeat: no-repeat;
   background-color: black;
-  -webkit-background-size: contain;
-  background-size: contain;
 }
 
 #Time {
-  color: black;
+  color: white;
   font-size: 100px;
   font-family: sans-serif;
   font-style: italic;
 }
 
 #Date {
-  color: black;
+  color: white;
   font-size: 60px;
   font-family: sans-serif;
   font-style: italic;

@@ -1,63 +1,117 @@
 {% load staticfiles %}
 <html>
-  <head>
-    <script type="templates/demo" src="time.js"></script>
-    <title>世界遺産</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/sekaiisan.css' %}">
-  </head>
+ <head>
+   <title>世界遺産</title>
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="{% static 'css/sekaiisan.css' %}">
+   <style>
+     .title {
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: auto;
+       margin: auto;
+       text-align: center;
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+       background-color: lightgray;
+       opacity: 0.5;
+       width: {{width}}px;
+     }
+
+     .sentence {
+       position: absolute;
+       top: 20;
+       left: 0;
+       right: 0;
+       bottom: auto;
+       margin: auto;
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+       background-color: lightgray;
+       opacity: 0.5;
+       width: {{width}}px;
+     }
+
+     .time {
+       color: white;
+       position: absolute;
+       top: {{height}};
+       left: 0;
+       right: 0;
+       bottom: 0;
+       margin: auto;
+       width:{{width}}px;
+     }
+
+     img {
+       display: block;
+       margin-left: auto;
+       margin-right: auto;
+     }
+
+   </style>
+ </head>
+
+ <body>
+   <img src = {{image}}>
+   <div class="title"><strong>{{name}}</strong></div>
+   <div class="sentence">{{detail}}</div>
 
 
-  <body background={{image}}>
-    <div style="text-align: center"><strong>{{name}}</strong></div>
-    <div style="width:{{width}}px " id = "detail" >{{detail}}</div>
+  <div class="time">
+    <p id ="Date"></p>
+    <p id ="Time"></p>
+  </div>
 
-    <div>
-      <a href={{bing_search}}>more images</a>
-      <p id ="Date" style="position: relative; width:{{width}}px; top: 0; left: 0; right: 0; bottom: 0; margin: auto;"></p>
-      <p id ="Time" style="position: relative; width:{{width}}px; top: 0; left: 0; right: 0; bottom: 0; margin: auto;"></p>
-    </div>
+  <div>
+    <a href={{bing_search}}>more images</a>
+  </div>
 
-  </body>
-    <meta http-equiv="content-type" charset="utf-8">
+ </body>
+   <meta http-equiv="content-type" charset="utf-8">
 </html>
 
+
 <script type="text/javascript">
-function setTwoDigits(num){
-  var tmp;
-  if(num < 10){
-    tmp = "0" + num;
-  }else{
+ function setTwoDigits(num){
+   var tmp;
+   if(num < 10){
+     tmp = "0" + num;
+   }else{
     tmp = num;
-  }
+   }
 
-  return tmp;
-}
+   return tmp;
+ }
 
-function showDate(){
-  var now = new Date();
+ function showDate(){
+   var now = new Date();
 
-  var month = setTwoDigits(now.getMonth() + 1);
-  var date = setTwoDigits(now.getDate());
-  var day = now.getDay();
+   var month = setTwoDigits(now.getMonth() + 1);
+   var date = setTwoDigits(now.getDate());
+   var day = now.getDay();
 
-  var dotw = new Array("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.");
+   var dotw = new Array("Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat.");
 
-  var show = month + "月" + date + "日 (" + dotw[day] + ")";
-  document.getElementById("Date").innerHTML = show;
-}
-setInterval('showDate()', 1000);
+   var show = month + "月" + date + "日 (" + dotw[day] + ")";
+   document.getElementById("Date").innerHTML = show;
+ }
+ setInterval('showDate()', 1000);
 
-function showTime(){
-  var now = new Date();
+ function showTime(){
+   var now = new Date();
 
-  var hour = setTwoDigits(now.getHours());
-  var min = setTwoDigits(now.getMinutes());
-  var sec = setTwoDigits(now.getSeconds());
+   var hour = setTwoDigits(now.getHours());
+   var min = setTwoDigits(now.getMinutes());
+   var sec = setTwoDigits(now.getSeconds());
 
-  var show = hour + ":" + min + ":" + sec;
-  document.getElementById("Time").innerHTML = show;
-}
-setInterval('showTime()', 1000);
+   var show = hour + ":" + min + ":" + sec;
+   document.getElementById("Time").innerHTML = show;
+ }
+ setInterval('showTime()', 1000);
 </script>
